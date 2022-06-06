@@ -1,0 +1,16 @@
+{% extends 'template.html' %}
+{% block title %}
+    list Expense
+{% endblock %}
+
+{% block body %}
+    {% if expense_list %}
+        <ul>
+            {% for expense in expense_list %}
+                <li>{{ expense.expenseName }} {{ expense.expenseValue }} {{ expense.expenseDate }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Expense Done </p>
+    {% endif %}
+{% endblock %}
