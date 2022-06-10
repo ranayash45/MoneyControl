@@ -1,0 +1,26 @@
+{% extends 'template.html' %}
+
+{% block body %}
+<h1>Update Expense</h1>
+<hr>
+<form action="{% url 'money:update' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="expense_id" value="{{expense.id}}" />
+    <table>
+        <tr>
+            <td>Expense Name: </td>
+            <td><input class="form-control" type="text" name="expenseName" placeholder="Expense Name: " value="{{ expense.expenseName }}"/></td>
+        </tr>
+        <tr>
+            <td>Expense value: </td>
+            <td><input class="form-control" type="text" name="expenseValue" placeholder="Expense Value: " value="{{ expense.expenseValue }}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Save" class="btn btn-primary"/>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

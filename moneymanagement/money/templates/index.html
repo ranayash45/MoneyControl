@@ -4,12 +4,29 @@
 {% endblock %}
 
 {% block body %}
-    {% if expense_list %}
-        <ul>
-            {% for expense in expense_list %}
-                <li>{{ expense.expenseName }} {{ expense.expenseValue }} {{ expense.expenseDate }}</li>
+    {% if expense.list %}
+        <table class="table">
+            <tr>
+                <th>Expense Name</th>
+                <th>Expense Date/Time</th>
+                <th>Expense Value</th>
+                <th></th>
+            </tr>
+            {% for expense in expense.list %}
+                <tr>
+                    <td>{{ expense.expenseName }}</td>
+                    <td>{{ expense.expenseDate }}</td>
+                    <td>{{ expense.expenseValue }}</td>
+                    <td><button class="btn btn-secondary"><a href="{% url 'money:update' expense.id %}">Update</a></button> 
+                        <button class="btn btn-danger"><a href="{% url 'money:delete' expense.id %}">Remove</a></button></td>
+                </tr>
             {% endfor %}
-        </ul>
+            <tr>
+                <td colspan="2">Total: </td>
+                <td>{{ expense.total }}</td>
+                <td></td>
+            </tr>
+        </table>
     {% else %}
         <p>No Expense Done </p>
     {% endif %}

@@ -6,13 +6,19 @@
 {% block body %}
 <form action="{%  url 'money:add' %}" method="post">
     {% csrf_token %}
-    <fieldset>
-        <legend>Expense Details</legend>
-        <label>Expense Name: </label>
-        <input type="text" name="expenseName" />
-        <label>Expense Cost: </label>
-        <input type="text" name="expenseCost" />
-    </fieldset>
-    <input class="btn btn-primary" type="submit" value="Add Expense" />
+    <div class="row">
+        <fieldset>
+            <legend>Expense Details</legend>
+            <label>Expense Name: </label>
+            <input type="text" name="expenseName" />
+            <label>Expense Cost: </label>
+            <input type="text" name="expenseCost" />
+        </fieldset>
+    </div>
+    <div class="row">
+        <div>
+            <input class="btn btn-primary" type="submit" value="Add Expense" />
+        </div>
+    </div>
 </form> 
 {% endblock %}
